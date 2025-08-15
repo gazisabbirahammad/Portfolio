@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="style.css">
 
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gazi – Software Engineer | Web Developer</title>
   <meta name="description" content="Portfolio of Gazi – Software Engineering student and web developer specializing in Wix, Java OOP, C/C++, SQL, and requirements engineering." />
   <meta name="color-scheme" content="light dark" />
@@ -560,6 +560,8 @@
 
           </form>
         </div>
+        
+
         <div class="card-plain">
   <h3 class="text-3xl font-bold mb-2">Reach Me</h3>
   <p class="text-gray-400 mb-6">I’m most responsive on Email and LinkedIn.</p>
@@ -570,22 +572,34 @@
     </li>
     
     <li>
-  <strong class="text-lg">GitHub:</strong>
-  <a href="https://github.com/gazisabbirahammad"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="color: #60a5fa;" 
-     class="hover:text-blue-300 transition-colors duration-200">
-  </a>
-</li>
-
-    
-    <li>
-      <strong class="text-lg">LinkedIn:</strong>
-      <a href="https://www.linkedin.com/in/gazisabbirahammad/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">https://www.linkedin.com/in/gazisabbirahammad/</a>
+      <strong class="text-lg">Phone:</strong>
+      <a href="+8616696176950" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">+8616696176950</a>
     </li>
   </ul>
-    <p><a class="btn" href="#" download>Download Resume (PDF)</a></p>
+<div class="social-icons">
+  
+    <a href="https://github.com/gazisabbirahammad" target="_blank"><i class="fab fa-github"></i></a>
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/gazisabbirahammad/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sabbir_priyo_/" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/8801737207793" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Reddit -->
+    <a href="https://www.reddit.com/user/yourusername" target="_blank">
+        <i class="fab fa-reddit"></i>
+    </a>
+</div>
+    <p><a class="btn" href="CV.pdf" download>Download Resume (PDF)</a></p>
 
         </div>
       </div>
@@ -602,11 +616,11 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Active link highlighting
-    const sections = [...document.querySelectorAll('section[id]')];
-    const navLinks = [...document.querySelectorAll('header nav a')];
-    const byId = id => navLinks.find(a => a.getAttribute('href') === '#' + id);
+    constsections = [...document.querySelectorAll('section[id]')];
+    constnavLinks = [...document.querySelectorAll('header nav a')];
+    constbyId = id => navLinks.find(a => a.getAttribute('href') === '#' + id);
 
-    const io = new IntersectionObserver(entries => {
+    constio = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         const link = byId(entry.target.id);
         if (!link) return;

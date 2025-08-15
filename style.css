@@ -11,3 +11,31 @@
   margin: 0;
 }
 
+
+/* General styles for all devices */
+body {
+  font-size: 16px;
+}
+
+/* Styles that only apply on screens larger than 768px (e.g., tablets) */
+@media (min-width: 768px) {
+  .sidebar {
+    width: 250px;
+    float: left;
+  }
+}
+
+/* Styles that only apply on screens larger than 1024px (e.g., desktops) */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  .main-content {
+    margin-left: 270px;
+  }
+}
+img {
+  max-width: 100%; /* Ensures the image never exceeds its parent's width */
+  height: auto;    /* Maintains the aspect ratio */
+  display: block;  /* Prevents extra space below the image */
+}
