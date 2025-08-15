@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gazi – Software Engineer | Web Developer</title>
+  <meta name="description" content="Portfolio of Gazi – Software Engineering student and web developer specializing in Wix, Java OOP, C/C++, SQL, and requirements engineering." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* ====== Design Tokens ====== */
+    :root {
+      --bg: #0b0f14;
+      --surface: #111821;
+      --surface-2: #16202b;
+      --text: #e6eef7;
+      --muted: #9fb3c8;
+      --brand: #6aa4ff;
+      --brand-2: #77ffc0;
+      --accent: #ffd166;
+      --danger: #ff7878;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7fbff;
+        --surface: #ffffff;
+        --surface-2: #f0f6ff;
+        --text: #0c1724;
+        --muted: #4a5b70;
+        --brand: #1a6cff;
+        --brand-2: #08a86b;
+        --accent: #cc8b0b;
+        --danger: #d23b3b;
+        --shadow: 0 10px 30px rgba(16, 42, 82, .12);
+      }
+    }
+
+    /* ====== Base ====== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1000px 600px at 10% -10%, rgba(106,164,255,.12), transparent 60%), radial-gradient(700px 500px at 120% 20%, rgba(119,255,192,.12), transparent 60%), var(--bg); color: var(--text); }
+    a { color: var(--brand); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(96%, var(--maxw)); margin-inline: auto; }
+    .chip { display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .7rem; border-radius: 999px; background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); font-size:.85rem; color: var(--muted); }
+
+    /* ====== Header / Nav ====== */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0)); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .8rem 0; }
+    .brand { display:flex; align-items:center; gap:.7rem; font-weight:700; letter-spacing:.3px; }
+    .brand .logo { width: 36px; height:36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); }
+    nav ul { list-style:none; display:flex; gap:1rem; margin:0; padding:0; }
+    nav a { padding:.6rem .9rem; border-radius: 12px; color: var(--text); opacity:.9; }
+    nav a.active, nav a:hover { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border:1px solid rgba(255,255,255,.08); opacity:1; }
+
+    /* ====== Hero ====== */
+    .hero { padding: 6rem 0 3rem; display:grid; grid-template-columns: 1.2fr .8fr; gap:2rem; align-items:center; }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.1; margin:.6rem 0; }
+    .hero p { color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.1rem); }
+    .hero-card { background: linear-gradient(180deg, var(--surface-2), var(--surface)); padding:2rem; border-radius: var(--radius); box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.08); }
+    .buttons { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.2rem; }
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:.75rem 1rem; border-radius: 14px; border:1px solid rgba(255,255,255,.12); background: var(--brand); color:#fff; font-weight:600; box-shadow: var(--shadow); }
+    .btn.secondary { background: transparent; color: var(--text); }
+
+    /* ====== Sections ====== */
+    section { padding: 3.5rem 0; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
+    .section-title h2 { margin:0; font-size: clamp(1.4rem, 2.8vw, 2rem); }
+
+    /* ====== About ====== */
+    .about { display:grid; grid-template-columns: .9fr 1.1fr; gap:2rem; }
+    .about .card { background: linear-gradient(180deg, var(--surface-2), var(--surface)); padding:1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.08); }
+    .kv { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem; margin-top:1rem; }
+    .kv div { background: var(--surface-2); border-radius: 12px; padding: .9rem; border:1px solid rgba(255,255,255,.06); }
+    .kv strong { display:block; font-size:1.1rem; }
+    .kv small { color: var(--muted); }
+
+    /* ====== Skills ====== */
+    .skills-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:1rem; }
+    .skill { background: linear-gradient(180deg, var(--surface-2), var(--surface)); padding:1rem; border-radius: 14px; border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+    .skill h4 { margin:.2rem 0 .4rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag { padding:.35rem .6rem; border-radius: 999px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.06); font-size:.85rem; color: var(--muted); }
+
+    /* ====== Projects ====== */
+    .projects { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1rem; }
+    .card { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:flex; flex-direction:column; }
+    .card .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(106,164,255,.18), rgba(119,255,192,.18)); display:grid; place-items:center; font-weight:700; color: var(--muted); }
+    .card .body { padding:1rem; display:flex; flex-direction:column; gap:.6rem; }
+    .card .meta { color: var(--muted); font-size:.9rem; }
+    .card .actions { display:flex; gap:.6rem; margin-top:.5rem; }
+    .card .actions a { flex:1; text-align:center; padding:.55rem .8rem; border-radius: 12px; border:1px solid rgba(255,255,255,.1); }
+    .card .actions a.primary { background: var(--brand); color:#fff; }
+
+    /* ====== Achievements / Timeline ====== */
+    .timeline { position:relative; padding-left: 1.5rem; }
+    .timeline::before { content:""; position:absolute; left:.3rem; top:.3rem; bottom:.3rem; width:2px; background: linear-gradient(180deg, var(--brand), transparent); }
+    .tl-item { position:relative; margin-bottom:1rem; padding-left:1rem; }
+    .tl-item::before { content:""; position:absolute; left:-.05rem; top:.2rem; width:.8rem; height:.8rem; border-radius:50%; background: var(--brand); box-shadow: 0 0 0 3px rgba(106,164,255,.2); }
+    .tl-item h4 { margin:.1rem 0; }
+    .tl-item p { margin:.2rem 0; color: var(--muted); }
+
+    /* ====== Education ====== */
+    .edu { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem; }
+    .edu .edu-card { padding:1rem; border-radius: 14px; border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, var(--surface-2), var(--surface)); box-shadow: var(--shadow); }
+    .edu .meta { color: var(--muted); }
+
+    /* ====== Contact ====== */
+    .contact-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:1rem; }
+    form { display:grid; gap:.8rem; }
+    input, textarea { width:100%; padding:.9rem 1rem; border-radius: 12px; border:1px solid rgba(255,255,255,.12); background: var(--surface-2); color: var(--text); }
+    textarea { min-height: 140px; resize: vertical; }
+    .submit { background: var(--brand); color:#fff; border:none; cursor:pointer; font-weight:700; box-shadow: var(--shadow); }
+    .card-plain { padding:1rem; border-radius: 14px; border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, var(--surface-2), var(--surface)); }
+
+    /* ====== Footer ====== */
+    footer { padding:2rem 0 4rem; color: var(--muted); text-align:center; }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 4.5rem; }
+      .about { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav ul { display:none; }
+      .projects { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== Header ====== -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gazi Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0e0705;
+           
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 50px;
+            background-color: #0e0705;
+        }
+
+        /* Logo style */
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+        .logo span {
+            background-color: #00d9ff;
+            color: #ffffff;
+            padding: 0 5px;
+        }
+
+        /* Nav menu style */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+          font-size: 1.3rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            color: #00aeff;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span>G</span>azi
+        </div>
+
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about me">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+</body>
+</html>
+
+
+  <!-- ====== Hero ====== -->
+  <section class="hero container" id="home">
+    <div class="hero-card">
+      <span class="chip" aria-label="30">Software Engineer • Full‑Stack Developer</span>
+      <h1 class="typewriter">Gazi Sabbir Ahammad</h1>
+
+ 
+<style>
+.typewriter {
+  color: rgb(0, 238, 255);
+  font-size: 200px;
+  font-family: monospace;
+  overflow: hidden;            /* Ensures text hides until "typed" */
+  border-right: 5px solid #00a2ff; /* Cursor effect */
+  white-space: nowrap;
+  width: 0;                    /* Start hidden */
+  animation: typing 3s steps(30, end) forwards,
+             blink 0.6s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 25ch } /* Adjust length to match your text */
+}
+
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+</style>
+
+      <!-- Font Awesome CDN (place inside <head> once) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- GitHub and Email Icons -->
+<div class="social-icons">
+  
+    <a href="https://github.com/gazisabbirahammad" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:gazisabbirahammad1@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+
+<!-- CSS -->
+<style>
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+.social-icons a {
+    color: rgb(245, 245, 245);
+    font-size: 2rem;
+    text-decoration: none;
+}
+.social-icons a:hover {
+    color: #00ccff;
+}
+</style>
+
+      <div class="buttons">
+        <a class="btn" href="#projects">View Projects</a>
+      </div>
+    </div>
+    <div>
+        <div>
+          <img src="pic1.jpeg" alt="Gazi Portrait" style="width: 350px; border-radius : 30px; display:block; margin:  auto;" />
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== About ====== -->
+  <section id="about me">
+    <div class="container about">
+      <div class="card">
+        <div class="section-title"><h2>About Me</h2><span class="chip">Open to internships & freelance</span></div>
+        <p>
+          I’m focused on <strong>Software Requirements Engineering</strong>, <strong>Java OOP</strong>, <strong>C/C++</strong>, and <strong>SQL</strong>. I’ve delivered numerous client sites in Wix with a consistent 100% positive feedback record. I enjoy designing systems with clear, testable requirements and implementing them with clean code and modern tooling.
+        </p>
+        <div class="kv">
+          <div><strong>Location</strong><small>Bangladesh (Studying in China)</small></div>
+          <div><strong>Experience</strong><small>5+ yrs Wix • 1+ yr Full‑stack</small></div>
+          <div><strong>Focus</strong><small>Full‑stack Developer • UI/UX</small></div>
+          <div><strong>Languages</strong><small>English • Bengali • Chinese</small></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title"><h2>Highlights</h2></div>
+        <ul>
+          <li>In 2023, I was honored to receive the esteemed Henan Provincial Government Scholarship from People's Republic of China, enabling me to pursue a Bachelor of Science degree in Software Engineering. This prestigious scholarship covers the entirety of my tuition fees throughout the duration of my four-year academic journey at Zhengzhou University.</li>
+          <br>
+          <li>Research interest: Low‑Resource Language Models: Applications & Limitations.</li>
+          <br>
+          <li>Working topic: Software Requirement Elicitation: Gamification using Decision Tree.</li>
+          <br>
+          <li>Preparing for the 2025 “Oracle Cup” International Student speech contest.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== Photo ====== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            background-color: #111;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .gallery {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .gallery h2 {
+            color: rgb(250, 252, 252);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="gallery">
+        <h2>Photo Gallery</h2>
+        <div style="
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 10px;
+  max-width: 800px;
+  margin: auto;
+">
+  <!-- Row 1 -->
+  <img src="1.jpeg" style="width:100%; border-radius:10px;">
+  <img src="5.jpeg" style="width:100%; border-radius:10px;">
+  
+
+  <!-- Row 2: chobi 4 (2nd column er niche extend) -->
+  <div style="grid-column: 2 / 4;">
+    <img src="2.jpeg" style="width:100%; border-radius:10px;">
+  </div>
+
+  <!-- Row 3: chobi 5 full width -->
+  <div style="grid-column: 1 / 4;">
+    <img src="4.jpeg" style="width:100%; border-radius:10px;">
+  </div>
+</div>
+
+
+    </section>
+
+</body>
+</html>
+
+
+  <!-- ====== Skills ====== -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title"><h2>Skills</h2><span class="chip">Always learning</span></div>
+      <div class="skills-grid">
+        <div class="skill"><h4>Programming</h4><div class="tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Java (OOP)</span><span class="tag">Python</span><span class="tag">SQL</span></div></div>
+        <div class="skill"><h4>Web</h4><div class="tags"><span class="tag">Wix</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></div>
+        <div class="skill"><h4>Tools</h4><div class="tags"><span class="tag">Git & GitHub</span><span class="tag">Jira</span><span class="tag">Trello</span><span class="tag">VS Code</span></div></div>
+        <div class="skill"><h4>Soft Skills</h4><div class="tags"><span class="tag">Communication</span><span class="tag">Teamwork</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Projects ====== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-title"><h2>Projects</h2><a class="chip" href="https://github.com/YOUR_GITHUB_USERNAME?tab=repositories" target="_blank" rel="noopener">See all on GitHub</a></div>
+      <div class="projects">
+        <article class="card">
+          <div class="thumb">SQL Inventory Manager</div>
+          <div class="body">
+            <h3>Inventory Management (SQL)</h3>
+            <p class="meta">Database design • CRUD • Reporting</p>
+            <p>Designed a normalized schema and SQL procedures for product tracking, stock alerts, and monthly analytics.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">ERD</span><span class="tag">Stored Procs</span></div>
+            <div class="actions">
+              <a class="primary" href="#" target="_blank" rel="noopener">Repo</a>
+              <a href="#" target="_blank" rel="noopener">Docs</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb">Java OOP Student System</div>
+          <div class="body">
+            <h3>Student Management (Java OOP)</h3>
+            <p class="meta">Encapsulation • Inheritance • Collections</p>
+            <p>Built a desktop app to manage student records, grading, and basic analytics with unit tests.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">JUnit</span><span class="tag">Swing/FX</span></div>
+            <div class="actions">
+              <a class="primary" href="#" target="_blank" rel="noopener">Repo</a>
+              <a href="#" target="_blank" rel="noopener">Readme</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb">AI Video Generator</div>
+          <div class="body">
+            <h3>Affiliate Video Automation</h3>
+            <p class="meta">YouTube automation • Scripting</p>
+            <p>Concept & prototype for a SaaS tool that generates, uploads, and tracks Amazon affiliate product videos.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">APIs</span></div>
+            <div class="actions">
+              <a class="primary" href="#" target="_blank" rel="noopener">Design Doc</a>
+              <a href="#" target="_blank" rel="noopener">Demo</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb">NLP Research</div>
+          <div class="body">
+            <h3>Low‑Resource LMs – Survey</h3>
+            <p class="meta">Research • Literature review</p>
+            <p>Surveyed applications and limitations of low‑resource language models with case studies and benchmarks.</p>
+            <div class="tags"><span class="tag">NLP</span><span class="tag">Survey</span><span class="tag">LaTeX</span></div>
+            <div class="actions">
+              <a class="primary" href="#" target="_blank" rel="noopener">Paper</a>
+              <a href="#" target="_blank" rel="noopener">Slides</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb">SRE Gamification</div>
+          <div class="body">
+            <h3>Elicitation via Gamification + DT</h3>
+            <p class="meta">Requirements • Decision Trees</p>
+            <p>Prototype framework using gamified tasks and decision tree logic to elicit and prioritize stakeholder needs.</p>
+            <div class="tags"><span class="tag">SRE</span><span class="tag">Gamification</span><span class="tag">Decision Tree</span></div>
+            <div class="actions">
+              <a class="primary" href="#" target="_blank" rel="noopener">Repo</a>
+              <a href="#" target="_blank" rel="noopener">Poster</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Achievements ====== -->
+  <section id="achievements">
+    <div class="container">
+      <div class="section-title"><h2>Achievements</h2><span class="chip">Proud moments</span></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <h4>Henan Provincial Government Scholarship</h4>
+          <p>In 2023, I was honored to receive the esteemed Henan Provincial Government Scholarship from People's Republic of China, enabling me to pursue a Bachelor of Science degree in Software Engineering.</p>
+        </div>
+        <div class="tl-item">
+          <h4>100% Positive Feedback – Wix Projects</h4>
+          <p>Delivered numerous client sites with excellent ratings and repeat clients.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Campus Volunteer </h4>
+          <p>Assisted in organizing university events, workshops, and student activities. Promoted student engagement and helped coordinate communication between faculty and students. </p>
+        </div>
+        <div class="tl-item">
+          <h4>Science Fairs & Tech Events</h4>
+          <p>Presented and explored projects across software and web development.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Education ====== -->
+  <section id="education">
+    <div class="container">
+      <div class="section-title"><h2>Education</h2><span class="chip">B.Sc. (ongoing)</span></div>
+      <div class="edu">
+        <div class="edu-card">
+          <h3>Zhengzhou University – B.Sc. in Software Engineering</h3>
+          <p class="meta">2023 – Present</p>
+          <p>Relevant courses: Software Requirements Engineering, Data Structures, Database Systems, OOP.</p>
+        </div>
+        <div class="edu-card">
+          <h3>Gazipur Metropolitan College – Higher School in Science Department</h3>
+          <p class="meta">2019 – 2022</p>
+          <p>Relevant courses: Information & Communication Technology (ICT), Mathematics (Algebra, Geometry, Calculus, Statistics), Physics.</p>
+        </div>
+        <div class="edu-card">
+          <h3>Rani Bilashmoni Govt. Boys' High School – Middle School in Science Department</h3>
+          <p class="meta">2014 – 2019</p>
+          <p>Relevant courses: Computer Studies / ICT, Mathematics (especially Algebra & Logic), Physics, Chemistry, Biology, English Language & Communication Skills.</p>
+        </div>
+        <div class="edu-card">
+          <h3>Self‑Learning & Certifications</h3>
+          <p class="meta">Ongoing</p>
+          <p>Web advanced design, Git/GitHub workflows, Agile fundamentals, and technical writing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+      <div class="section-title"><h2>Contact</h2><span class="chip">Let’s build something</span></div>
+      <div class="contact-grid">
+        <div class="card-plain">
+          <form name="contact" onsubmit="event.preventDefault(); alert('Thanks! This demo form does not send emails yet.');">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required placeholder="Your name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required placeholder="you@example.com" />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" required placeholder="Say hello…"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+
+          </form>
+        </div>
+        <div class="card-plain">
+  <h3 class="text-3xl font-bold mb-2">Reach Me</h3>
+  <p class="text-gray-400 mb-6">I’m most responsive on Email and LinkedIn.</p>
+  <ul class="space-y-4">
+    <li>
+      <strong class="text-lg">Email:</strong>
+      <a href="mailto:gazisabbirahammad1@gmail.com" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">gazisabbirahammad1@gmail.com</a>
+    </li>
+    
+    <li>
+  <strong class="text-lg">GitHub:</strong>
+  <a href="https://github.com/gazisabbirahammad"
+     target="_blank"
+     rel="noopener noreferrer"
+     style="color: #60a5fa;" 
+     class="hover:text-blue-300 transition-colors duration-200">
+  </a>
+</li>
+
+    
+    <li>
+      <strong class="text-lg">LinkedIn:</strong>
+      <a href="https://www.linkedin.com/in/gazisabbirahammad/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">https://www.linkedin.com/in/gazisabbirahammad/</a>
+    </li>
+  </ul>
+    <p><a class="btn" href="#" download>Download Resume (PDF)</a></p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<footer class="site-footer">
+  <p>Copyright &copy; Gazi Sabbir Ahammad.</p>
+</footer>
+
+ <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Active link highlighting
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navLinks = [...document.querySelectorAll('header nav a')];
+    const byId = id => navLinks.find(a => a.getAttribute('href') === '#' + id);
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const link = byId(entry.target.id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+    sections.forEach(sec => io.observe(sec));
+  </script>
+
+   <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Active link highlighting
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navLinks = [...document.querySelectorAll('header nav a')];
+    const byId = id => navLinks.find(a => a.getAttribute('href') === '#' + id);
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const link = byId(entry.target.id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+    sections.forEach(sec => io.observe(sec));
+  </script>
+
+
+ 
+</body>
+</html>
+
